@@ -1,44 +1,10 @@
-# tauri-app
+### 简介
 
-This template should help get you started developing with Vue 3 in Vite.
+用于拉取ones上登记的工时并生成每个项目都干了什么活以及用了多少时间
 
-## Recommended IDE Setup
+> 打包好的程序只有exe和msi，其他系统都是支持的包括android，想用自己打包吧
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-yarn
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-yarn tauri dev
-```
-
-### Compile and Minify for Production
-
-```sh
-yarn tauri build
-```
-
-### 下载项目 使用--recurse-submodules 一并下载子项目
-```sh
-git clone --recurse-submodules
-```
-
-添加submodule方法
-```sh
-git submodule add https://github.com/qilimazhualuo/3dmap.git src/common/map3
-git submodule add https://github.com/qilimazhualuo/three.git src/common/three
-git submodule add https://github.com/qilimazhualuo/2dMap.git src/common/map
-```
+### 如果你要在debian上打开项目，需要安装以下依赖
 
 ```bash
 debian系统依赖安装其他系统（。- 。）
