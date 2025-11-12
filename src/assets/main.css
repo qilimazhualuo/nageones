@@ -1,5 +1,4 @@
 @import './base.css';
-@import './user.less';
 
 #app {
   max-width: 100vw;

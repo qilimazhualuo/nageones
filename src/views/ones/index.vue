@@ -1,34 +1,22 @@
 <script setup lang="jsx">
-import { ref } from 'vue'
-import { loginApi, getScheduleApi } from './api'
+import { ref, getCurrentInstance } from 'vue'
+import { loginApi, getScheduleApi } from '@/api'
 import { storeToRefs } from 'pinia'
-import { useDataStore } from './store'
+import { useDataStore } from '@/store/store'
 import { message } from 'ant-design-vue'
 import dayjs from 'dayjs'
 
+const { proxy } = getCurrentInstance()
+
 const dataStore = useDataStore()
 const { loginInfo, userInfo } = storeToRefs(dataStore)
-console.log(userInfo.value)
 
-const { setToken, setUserInfo } = dataStore
-const login = () => {
-    loginApi(loginInfo.value)
-        .then((res) => {
-            console.log(res)
-            const {
-                user: { token, name, uuid },
-            } = res
-            setToken(token)
-            setUserInfo({ name, uuid })
-            message.success('登陆成功')
-        })
-        .catch((err) => {
-            message.error(err.message)
-        })
-}
 
 const logout = () => {
     message.success('退出干什么！太突然了！多冒昧啊！')
+    proxy.$router.push({
+        name: 'login'
+    })
 }
 
 const getSchedule = () => {
@@ -175,35 +163,24 @@ const columns = [
 
 <template>
     <div class="ones">
-        <a-space class="ones-header">
-            <a-form :model="loginInfo" layout="inline" @finish="login">
-                <a-form-item name="baseUrl" label="ones地址">
-                    <a-input v-model:value="loginInfo.baseUrl" placeholder="https://ones.woa.com:80"/>
-                </a-form-item>
-                <a-form-item name="email" label="邮箱">
-                    <a-input v-model:value="loginInfo.email" />
-                </a-form-item>
-                <a-form-item name="password" label="密码">
-                    <a-input v-model:value="loginInfo.password" />
-                </a-form-item>
-                <a-form-item>
-                    <a-button type="primary" html-type="submit">登录</a-button>
-                </a-form-item>
-            </a-form>
+        <div class="ones-header">
+            <a-typography-title :level="3">{{ $route.meta.title }}</a-typography-title>
             <a-tooltip v-if="userInfo.name">
                 <template #title>
                     <span>退出登录</span>
                 </template>
                 <a-button danger @click="logout">{{ userInfo.name }}</a-button>
             </a-tooltip>
-        </a-space>
-        <a-space>
+        </div>
+        <div class="ones-header">
             <a-range-picker v-model:value="time" :allow-clear="false" />
-            <a-button type="primary" @click="getSchedule">查询</a-button>
-            <a-button type="primary" :disabled="!dataSource.length" @click="copySchedule">
-                复制
-            </a-button>
-        </a-space>
+            <a-space>
+                <a-button type="primary" @click="getSchedule">查询</a-button>
+                <a-button type="primary" :disabled="!dataSource.length" @click="copySchedule">
+                    复制
+                </a-button>
+            </a-space>
+        </div>
         <a-table :columns="columns" :data-source="dataSource" :pagination="false" />
     </div>
 </template>
@@ -211,11 +188,21 @@ const columns = [
 <style lang="less">
 .ones {
     padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
     .ones-header {
-        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #FFFFFF;
         border-radius: 4px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
         padding: 8px;
+        .ant-typography {
+            margin-bottom: 0;
+        }
     }
 }
 </style>

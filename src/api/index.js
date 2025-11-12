@@ -1,5 +1,5 @@
 import { request } from '@/common/request'
-import { useDataStore } from './store'
+import { useDataStore } from '@/store/store'
 
 const httpRequest = (options) => {
     const dataStore = useDataStore()
