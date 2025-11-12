@@ -177,6 +177,9 @@ const columns = [
     <div class="ones">
         <a-space class="ones-header">
             <a-form :model="loginInfo" layout="inline" @finish="login">
+                <a-form-item name="url" label="你家的ones地址">
+                        <a-input v-model:value="loginInfo.url" placeholder="https://ones.woa.com:80"/>
+                </a-form-item>
                 <a-form-item name="email" label="邮箱">
                     <a-input v-model:value="loginInfo.email" />
                 </a-form-item>

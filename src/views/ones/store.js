@@ -11,6 +11,7 @@ export const useDataStore = defineStore(
         }
 
         const loginInfo = ref({
+            baseUrl: '',
             email: '',
             password: '',
         })

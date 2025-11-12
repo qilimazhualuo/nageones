@@ -3,7 +3,7 @@
     "explorer.fileNesting.patterns": {
         "tsconfig.json": "tsconfig.*.json, env.d.ts",
         "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*, app-icon.png, components.d.ts, index.html",
-        "package.json": ".eslintrc.cjs, .prettier*, .editorconfig, bun.lock, eslint.config.js, .git*, README.md"
+        "package.json": ".eslintrc.cjs, .prettier*, .editorconfig, *.lock, eslint.config.js, .git*, README.md"
     },
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit"

@@ -2,11 +2,11 @@
     "$schema": "https://schema.tauri.app/config/2",
     "productName": "maomao",
     "version": "0.1.0",
-    "identifier": "com.maomao.app",
+    "identifier": "com.maomao",
     "build": {
-        "beforeDevCommand": "bun dev",
+        "beforeDevCommand": "yarn dev",
         "devUrl": "http://localhost:1420",
-        "beforeBuildCommand": "bun build",
+        "beforeBuildCommand": "yarn build",
         "frontendDist": "../dist"
     },
     "app": {
