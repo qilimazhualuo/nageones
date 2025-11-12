@@ -1,0 +1,9 @@
+[submodule "src/common/map3"]
+	path = src/common/map3
+	url = https://github.com/qilimazhualuo/3dmap.git
+[submodule "src/common/three"]
+	path = src/common/three
+	url = https://github.com/qilimazhualuo/three.git
+[submodule "src/common/map"]
+	path = src/common/map
+	url = https://github.com/qilimazhualuo/2dMap.git
